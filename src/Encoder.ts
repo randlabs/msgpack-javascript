@@ -75,7 +75,7 @@ export class Encoder<ContextType> {
     }
   }
   encodeNumber(object: number) {
-    if (Number.isSafeInteger(object)) {
+    // if (Number.isSafeInteger(object)) {
       if (object >= 0) {
         if (object < 0x80) {
           // positive fixint
@@ -119,18 +119,18 @@ export class Encoder<ContextType> {
           this.writeI64(object);
         }
       }
-    } else {
-      // non-integer numbers
-      if (this.forceFloat32) {
-        // float 32
-        this.writeU8(0xca);
-        this.writeF32(object);
-      } else {
-        // float 64
-        this.writeU8(0xcb);
-        this.writeF64(object);
-      }
-    }
+    // } else {
+    //   // non-integer numbers
+    //   if (this.forceFloat32) {
+    //     // float 32
+    //     this.writeU8(0xca);
+    //     this.writeF32(object);
+    //   } else {
+    //     // float 64
+    //     this.writeU8(0xcb);
+    //     this.writeF64(object);
+    //   }
+    // }
   }
 
   writeStringHeader(byteLength: number) {
